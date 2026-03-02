@@ -9,21 +9,29 @@ This project demonstrates the design and implementation of a segmented virtual c
 The lab consists of the following virtual machines:
 
 pfSense – Firewall/router providing network segmentation and internet access
+
 Kali Linux – Attacker machine for security testing
+
 Windows 10 – Dual-homed system acting as a pivot between networks
+
 Metasploitable – Vulnerable target machine (internal network)
+
 OWASP Broken Web Applications (BWA) – Vulnerable web applications for testing
 
 ## Network Design
 
 ### Internal Network 1 (intnet – 192.168.1.0/24)
 Kali Linux - '192.168.1.111'
+
 Windows 10 - '192.168.1.113'
+
 OWASP BWA - (same subnet)
+
 pfSense LAN - '192.168.1.1'
 
 ### Internal Network 2 (intnet2 – 192.168.2.0/24)
 Windows 10 - '192.168.2.8'
+
 Metasploitable - '192.168.2.2'
 
 ### WAN
@@ -47,6 +55,7 @@ Windows 10 is dual-homed, connecting both networks and simulating a pivot point 
 Verified that Kali Linux is correctly connected to the internal network.
 
 Interface: 'eth0'
+
 IP Address: '192.168.1.111'
 
 Evidence:
@@ -57,7 +66,9 @@ Evidence:
 Tested external connectivity and DNS resolution from pfSense.
 
 Command: 'ping www.google.com'
+
 Result: Successful responses with 0% packet loss
+
 Domain resolved to: '142.251.221.68'
 
 Evidence:
