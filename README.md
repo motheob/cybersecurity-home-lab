@@ -1,45 +1,37 @@
-# cybersecurity-home-lab
+# 🔐 cybersecurity-home-lab
 Cybersecurity lab for network segmentation, lateral movement, and exploitation using Kali Linux, pfSense, and vulnerable VMs.
 
-## Overview
+## 🚀 Overview
 This project demonstrates the design and implementation of a segmented virtual cybersecurity lab using VirtualBox and pfSense. The environment simulates a real-world enterprise network with isolated internal segments, enabling safe testing of vulnerabilities, network communication, and lateral movement scenarios.
 
-## Lab Architecture
+## 🧱 Lab Architecture
 
 The lab consists of the following virtual machines:
 
-pfSense – Firewall/router providing network segmentation and internet access
+- **pfSense** – Firewall/router providing network segmentation and internet access  
+- **Kali Linux** – Attacker machine for security testing  
+- **Windows 10** – Dual-homed system acting as a pivot between networks  
+- **Metasploitable** – Vulnerable target machine (internal network)  
+- **OWASP Broken Web Applications (BWA)** – Vulnerable web applications 
 
-Kali Linux – Attacker machine for security testing
-
-Windows 10 – Dual-homed system acting as a pivot between networks
-
-Metasploitable – Vulnerable target machine (internal network)
-
-OWASP Broken Web Applications (BWA) – Vulnerable web applications for testing
-
-## Network Design
+## 🌐 Network Design
 
 ### Internal Network 1 (intnet – 192.168.1.0/24)
-Kali Linux - '192.168.1.111'
-
-Windows 10 - '192.168.1.113'
-
-OWASP BWA - (same subnet)
-
-pfSense LAN - '192.168.1.1'
+- Kali Linux → `192.168.1.111`  
+- Windows 10 → `192.168.1.113`  
+- OWASP BWA → (same subnet)  
+- pfSense LAN → `192.168.1.1`
 
 ### Internal Network 2 (intnet2 – 192.168.2.0/24)
-Windows 10 - '192.168.2.8'
-
-Metasploitable - '192.168.2.2'
+- Windows 10 → `192.168.2.8`  
+- Metasploitable → `192.168.2.2`
 
 ### WAN
-pfSense WAN connected via NAT to the host machine
+pfSense WAN connected via **NAT** to the host machine
 
 Windows 10 is dual-homed, connecting both networks and simulating a pivot point for lateral movement.
 
-## Network Summary
+## 📊 Network Summary
 
 | Machine        | Interface | IP Address     | Network   |
 |----------------|----------|----------------|----------|
@@ -49,14 +41,13 @@ Windows 10 is dual-homed, connecting both networks and simulating a pivot point 
 | Metasploitable | eth0     | 192.168.2.2    | intnet2  |
 | pfSense        | LAN      | 192.168.1.1    | intnet   |
 
-## Validation Tests
+## 🧪 Validation Tests
 
 ### Kali Linux Configuration
 Verified that Kali Linux is correctly connected to the internal network.
 
-Interface: 'eth0'
-
-IP Address: '192.168.1.111'
+- Interface: `eth0`  
+- IP Address: `192.168.1.111`
 
 Evidence:
 
@@ -65,11 +56,9 @@ Evidence:
 ### pfSense Internet Connectivity
 Tested external connectivity and DNS resolution from pfSense.
 
-Command: 'ping www.google.com'
-
-Result: Successful responses with 0% packet loss
-
-Domain resolved to: '142.251.221.68'
+- Command: `ping www.google.com`  
+- Result: Successful responses with **0% packet loss**  
+- Domain resolved to: `142.251.221.68`  
 
 Evidence:
 
@@ -92,7 +81,7 @@ Evidence:
 
 Successful ICMP communication confirms both systems are correctly configured on the same subnet (192.168.2.0/24). This validates the functionality of the isolated internal network and supports realistic internal network attack scenarios such as lateral movement.
 
-## Supporting Configuration Evidence
+## 🔍 Supporting Configuration Evidence
 
 ### Windows 10 Configuration
 Evidence:
@@ -104,14 +93,14 @@ Evidence:
 
 <img width="716" height="303" alt="metasploitable-ifconfig" src="https://github.com/user-attachments/assets/5503b4dc-bfd0-4e61-9841-8f0eeff4f15a" />
 
-## Security Concepts Demonstrated
+## 🔐 Security Concepts Demonstrated
 - Network segmentation using multiple internal networks  
 - Firewall configuration and traffic control using pfSense  
 - Dual-homed system risk (pivot point for lateral movement)  
 - Isolation of vulnerable systems within a controlled lab  
 - DNS resolution and outbound connectivity validation
 
-## Security Considerations
+## ⚠️ Security Considerations
 
 - Vulnerable machines are not exposed directly to the internet  
 - pfSense controls traffic between WAN and internal networks  
