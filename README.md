@@ -1,4 +1,4 @@
-# 🔐 cybersecurity-home-lab
+# 🔐 Enterprise Network Security Lab
 Cybersecurity lab for network segmentation, lateral movement, and exploitation using Kali Linux, pfSense, and vulnerable VMs.
 
 ## 🚀 Overview
